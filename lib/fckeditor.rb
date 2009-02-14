@@ -35,7 +35,7 @@ module Fckeditor
         inputs = "<textarea id='#{id}' #{cols} #{rows} name='#{object}[#{field}]'>#{value}</textarea>\n"
       end
 
-      js_path = "#{controller.relative_url_root}/javascripts"
+      js_path = "#{ActionController::Base.relative_url_root}/javascripts"
       base_path = "#{js_path}/fckeditor/"
       return inputs <<
         javascript_tag("var oFCKeditor = new FCKeditor('#{id}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
@@ -65,12 +65,12 @@ module Fckeditor
     alias_method :fckeditor_form_remote_for, :fckeditor_remote_form_for
 
     def fckeditor_element_id(object, field)
-      id = eval("@#{object}.id")
+      id = eval("@#{object}.object_id")
       "#{object}_#{id}_#{field}_editor"
     end
 
     def fckeditor_div_id(object, field)
-      id = eval("@#{object}.id")
+      id = eval("@#{object}.object_id")
       "div-#{object}-#{id}-#{field}-editor"
     end
 
