@@ -18,30 +18,36 @@ module Fckeditor
         klass = "#{object}".camelcase.constantize
         instance_variable_set("@#{object}", eval("#{klass}.new()"))
       end
+
       id = fckeditor_element_id(object, field)
 
-      cols = options[:cols].nil? ? '' : "cols='"+options[:cols]+"'"
-      rows = options[:rows].nil? ? '' : "rows='"+options[:rows]+"'"
+      options = {
+        'width' => '100%',
+        'height' => '100%',
+      }.merge(options.stringify_keys)
+      # can't allow id to be overridden since we depend on value elsewhere
+      options['id'] = id
 
-      width = options[:width].nil? ? '100%' : options[:width]
-      height = options[:height].nil? ? '100%' : options[:height]
+      toolbarSet = options.delete('toolbarSet') ||
+        options.delete('toolbar_set') || 'Default'
 
-      toolbarSet = options[:toolbarSet].nil? ? 'Default' : options[:toolbarSet]
-
-      if options[:ajax]
-        inputs = "<input type='hidden' id='#{id}_hidden' name='#{object}[#{field}]'>\n" <<
-                 "<textarea id='#{id}' #{cols} #{rows} name='#{id}'>#{value}</textarea>\n"
+      name = "#{object}[#{field}]"
+      if options.delete('ajax')
+        inputs = hidden_field_tag(name, nil, :id => "#{id}_hidden") +
+          text_area_tag(id, value, options)
       else
-        inputs = "<textarea id='#{id}' #{cols} #{rows} name='#{object}[#{field}]'>#{value}</textarea>\n"
+        inputs = text_area_tag(name, value, options)
       end
 
       js_path = "#{ActionController::Base.relative_url_root}/javascripts"
       base_path = "#{js_path}/fckeditor/"
       return inputs <<
-        javascript_tag("var oFCKeditor = new FCKeditor('#{id}', '#{width}', '#{height}', '#{toolbarSet}');\n" <<
-                       "oFCKeditor.BasePath = \"#{base_path}\"\n" <<
-                       "oFCKeditor.Config['CustomConfigurationsPath'] = '#{js_path}/fckcustom.js';\n" <<
-                       "oFCKeditor.ReplaceTextarea();\n")
+        javascript_tag(
+          "var oFCKeditor = new FCKeditor('#{id}', '#{options['width']}', '#{options['height']}', '#{toolbarSet}');\n" <<
+          "oFCKeditor.BasePath = \"#{base_path}\"\n" <<
+          "oFCKeditor.Config['CustomConfigurationsPath'] = '#{js_path}/fckcustom.js';\n" <<
+          "oFCKeditor.ReplaceTextarea();\n"
+        )
     end
 
     def fckeditor_form_remote_tag(options = {})
@@ -52,7 +58,8 @@ module Fckeditor
           before += fckeditor_before_js(e, f)
         end
       end
-      options[:before] = options[:before].nil? ? before : before + options[:before]
+      options[:before] =
+        options[:before].nil? ? before : before + options[:before]
       form_remote_tag(options)
     end
 
