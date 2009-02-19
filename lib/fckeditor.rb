@@ -37,9 +37,9 @@ module Fckeditor
       name = "#{object}[#{field}]"
       if options.delete('ajax')
         inputs = hidden_field_tag(name, nil, :id => "#{id}_hidden") +
-          text_area_tag(id, value, html_options)
+          text_area_tag(id, h(value), html_options)
       else
-        inputs = text_area_tag(name, value, html_options)
+        inputs = text_area_tag(name, h(value), html_options)
       end
 
       base_path = "#{ActionController::Base.relative_url_root}/javascripts/fckeditor/"
