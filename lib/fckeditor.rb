@@ -25,8 +25,11 @@ module Fckeditor
         'width' => '100%',
         'height' => '100%',
       }.merge(options.stringify_keys)
+
       # can't allow id to be overridden since we depend on value elsewhere
-      options['id'] = id
+      html_options = ActionView::Helpers::InstanceTag::DEFAULT_TEXT_AREA_OPTIONS.merge( {:id => id} )
+      html_options[:rows] = options[:rows] unless options[:rows].nil?
+      html_options[:cols] = options[:cols] unless options[:cols].nil?
 
       toolbarSet = options.delete('toolbarSet') ||
         options.delete('toolbar_set') || 'Default'
@@ -34,9 +37,9 @@ module Fckeditor
       name = "#{object}[#{field}]"
       if options.delete('ajax')
         inputs = hidden_field_tag(name, nil, :id => "#{id}_hidden") +
-          text_area_tag(id, value, options)
+          text_area_tag(id, value, html_options)
       else
-        inputs = text_area_tag(name, value, options)
+        inputs = text_area_tag(name, value, html_options)
       end
 
       base_path = "#{ActionController::Base.relative_url_root}/javascripts/fckeditor/"
@@ -71,12 +74,12 @@ module Fckeditor
     alias_method :fckeditor_form_remote_for, :fckeditor_remote_form_for
 
     def fckeditor_element_id(object, field)
-      id = eval("@#{object}.object_id")
+      id = eval("@#{object}.id")
       "#{object}_#{id}_#{field}_editor"
     end
 
     def fckeditor_div_id(object, field)
-      id = eval("@#{object}.object_id")
+      id = eval("@#{object}.id")
       "div-#{object}-#{id}-#{field}-editor"
     end
 
