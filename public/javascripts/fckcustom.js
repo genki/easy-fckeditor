@@ -20,6 +20,9 @@ FCKConfig.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbo
 // ONLY CHANGE BELOW HERE
 FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/silver/';
 
+FCKConfig.Plugins.Add( 'syntaxhighlight', 'en'); 
+FCKConfig.SyntaxHighlightLangDefault = 'ruby';   
+
 FCKConfig.ToolbarSets["Easy"] = [
         ['Bold','Italic','Underline','StrikeThrough','-'],
         ['OrderedList','UnorderedList','-'],
@@ -40,5 +43,5 @@ FCKConfig.ToolbarSets["Simple"] = [
         ['Image','Table','Rule','Smiley'],
         ['FontName','FontSize'],
         ['TextColor','BGColor'],
-        ['-','About']
+        ['-','SyntaxHighLight','-', 'About']
 ] ;
