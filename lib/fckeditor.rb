@@ -39,13 +39,12 @@ module Fckeditor
         inputs = text_area_tag(name, value, options)
       end
 
-      js_path = "#{ActionController::Base.relative_url_root}/javascripts"
-      base_path = "#{js_path}/fckeditor/"
+      base_path = "#{ActionController::Base.relative_url_root}/javascripts/fckeditor/"
       return inputs <<
         javascript_tag(
           "var oFCKeditor = new FCKeditor('#{id}', '#{options['width']}', '#{options['height']}', '#{toolbarSet}');\n" <<
           "oFCKeditor.BasePath = \"#{base_path}\"\n" <<
-          "oFCKeditor.Config['CustomConfigurationsPath'] = '#{js_path}/fckcustom.js';\n" <<
+          "oFCKeditor.Config['CustomConfigurationsPath'] = '#{ javascript_path 'fckcustom' }';\n" <<
           "oFCKeditor.ReplaceTextarea();\n"
         )
     end
