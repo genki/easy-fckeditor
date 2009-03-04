@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/fckeditor.rb" afterPath="$PROJECT_DIR$/lib/fckeditor.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/fckeditor_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/fckeditor_controller.rb" />
     </list>
     <ignored path="easy-fckeditor.iws" />
@@ -21,19 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fckeditor_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/fckeditor_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="197" column="55" selection-start="5728" selection-end="5745" vertical-scroll-proportion="-10.64">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="fckeditor.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/fckeditor.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="73" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.6760204">
+            <state line="37" column="73" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.6505102">
               <folding />
             </state>
           </provider>
@@ -203,7 +196,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="86" y="25" width="1305" height="1000" extended-state="0" />
+    <frame x="86" y="25" width="1305" height="1000" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
@@ -251,14 +244,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/controllers/fckeditor_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="197" column="55" selection-start="5728" selection-end="5745" vertical-scroll-proportion="-10.64">
+        <state line="197" column="91" selection-start="5781" selection-end="5781" vertical-scroll-proportion="0.33291614">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/fckeditor.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="73" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.6760204">
+        <state line="37" column="73" selection-start="1503" selection-end="1503" vertical-scroll-proportion="0.6505102">
           <folding />
         </state>
       </provider>
